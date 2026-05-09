@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>View Records – AttendEase</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo">
+      <span class="logo-box">⏱</span>
+      AttendEase
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="add-employee.html">Add Employee</a></li>
+      <li><a href="mark-attendance.html">Mark Attendance</a></li>
+      <li><a href="view-records.html" class="active">View Records</a></li>
+    </ul>
+    <div class="nav-right" id="navDate"></div>
+  </nav>
+
+  <div class="page-hdr">
+    <h1>📋 Attendance Records</h1>
+    <p>Search and filter all attendance records below.</p>
+  </div>
+
+  <!-- Tab buttons -->
+  <div class="tab-bar">
+    <button class="tab-btn active" id="tabRecords" onclick="switchTab('records')">📋 All Records</button>
+    <button class="tab-btn"        id="tabMonthly" onclick="switchTab('monthly')">📊 Monthly Report</button>
+  </div>
+
+  <!-- ALL RECORDS TAB -->
+  <div id="panelRecords">
+    <div class="filter-row">
+      <div class="search-box">
+        <input type="text" id="searchName" placeholder="Search by employee name..." oninput="filterRecords()"/>
+      </div>
+      <input type="date" class="fdate" id="dateFrom" onchange="filterRecords()"/>
+      <span style="color:var(--text3); font-size:0.85rem; align-self:center;">to</span>
+      <input type="date" class="fdate" id="dateTo" onchange="filterRecords()"/>
+      <select class="fsel" id="filterStatus" onchange="filterRecords()">
+        <option value="">All Status</option>
+        <option>Present</option>
+        <option>Late</option>
+        <option>Absent</option>
+      </select>
+      <button class="btn btn-outline" onclick="clearFilters()">✕ Clear</button>
+    </div>
+
+    <div class="table-section">
+      <div class="tbox">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Emp ID</th>
+              <th>Name</th>
+              <th>Department</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="recordsTbody">
+            <tr><td colspan="6" class="empty-row">Loading records...</td></tr>
+          </tbody>
+        </table>
+        <div class="tfoot" id="recordCount">Showing 0 records</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MONTHLY REPORT TAB -->
+  <div id="panelMonthly" style="display:none;">
+    <div class="filter-row">
+      <select class="fsel" id="monthSelect" onchange="loadMonthlyReport()">
+        <option value="01">January</option>
+        <option value="02">February</option>
+        <option value="03">March</option>
+        <option value="04">April</option>
+        <option value="05" selected>May</option>
+        <option value="06">June</option>
+        <option value="07">July</option>
+        <option value="08">August</option>
+        <option value="09">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+      </select>
+      <input type="text" class="fdate" id="yearInput" value="2026"
+             placeholder="Year" style="width:90px;" oninput="loadMonthlyReport()"/>
+    </div>
+
+    <div class="table-section">
+      <div class="tbox">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Emp ID</th>
+              <th>Name</th>
+              <th>Department</th>
+              <th>Present</th>
+              <th>Late</th>
+              <th>Absent</th>
+              <th>Attendance %</th>
+            </tr>
+          </thead>
+          <tbody id="monthlyTbody">
+            <tr><td colspan="8" class="empty-row">Select month to view report.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>AttendEase &copy; 2026 &nbsp;·&nbsp; Built with <b>Java</b> + <b>MySQL</b> + <b>HTML/CSS/JS</b></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

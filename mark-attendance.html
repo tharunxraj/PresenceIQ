@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mark Attendance – AttendEase</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo">
+      <span class="logo-box">⏱</span>
+      AttendEase
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="add-employee.html">Add Employee</a></li>
+      <li><a href="mark-attendance.html" class="active">Mark Attendance</a></li>
+      <li><a href="view-records.html">View Records</a></li>
+    </ul>
+    <div class="nav-right" id="navDate"></div>
+  </nav>
+
+  <div class="page-hdr">
+    <h1>✅ Mark Attendance</h1>
+    <p>Select a date and mark each employee as Present, Late or Absent.</p>
+  </div>
+
+  <div class="ctrl-row">
+    <div class="date-chip">
+      <label>📅 Date :</label>
+      <input type="date" id="attendDate"/>
+    </div>
+    <button class="btn btn-success" onclick="saveAttendance()">💾 Save Attendance</button>
+  </div>
+
+  <div style="padding: 0 84px;">
+    <div class="alert alert-ok hidden" id="saveAlert">✅ Attendance saved successfully!</div>
+  </div>
+
+  <div class="table-section">
+    <div class="tbox">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Emp ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="attendTbody">
+          <tr><td colspan="5" class="empty-row">Loading employees...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>AttendEase &copy; 2026 &nbsp;·&nbsp; Built with <b>Java</b> + <b>MySQL</b> + <b>HTML/CSS/JS</b></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

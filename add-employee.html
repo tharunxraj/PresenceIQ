@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Employee – AttendEase</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo">
+      <span class="logo-box">⏱</span>
+      AttendEase
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="add-employee.html" class="active">Add Employee</a></li>
+      <li><a href="mark-attendance.html">Mark Attendance</a></li>
+      <li><a href="view-records.html">View Records</a></li>
+    </ul>
+    <div class="nav-right" id="navDate"></div>
+  </nav>
+
+  <div class="page-hdr">
+    <h1>➕ Add New Employee</h1>
+    <p>Fill in the details below to register a new employee into the system.</p>
+  </div>
+
+  <div class="form-section">
+    <div class="form-box">
+
+      <!-- success / error alerts -->
+      <div class="alert alert-ok  hidden" id="msgOk">✅ Employee added successfully!</div>
+      <div class="alert alert-err hidden" id="msgErr" id="msgErr">❌ Please fill all required fields.</div>
+
+      <!-- Row 1 -->
+      <div class="form-row">
+        <div class="fgroup">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" id="empName" placeholder="e.g. Rahul Kumar"/>
+        </div>
+        <div class="fgroup">
+          <label>Employee ID <span class="req">*</span></label>
+          <input type="text" id="empId" placeholder="e.g. EMP001"/>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="form-row">
+        <div class="fgroup">
+          <label>Department <span class="req">*</span></label>
+          <select id="empDept">
+            <option value="">-- Select Department --</option>
+            <option>IT</option>
+            <option>HR</option>
+            <option>Finance</option>
+            <option>Marketing</option>
+            <option>Operations</option>
+            <option>Sales</option>
+          </select>
+        </div>
+        <div class="fgroup">
+          <label>Job Role <span class="req">*</span></label>
+          <input type="text" id="empRole" placeholder="e.g. Software Developer"/>
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="form-row">
+        <div class="fgroup">
+          <label>Email Address</label>
+          <input type="email" id="empEmail" placeholder="e.g. rahul@company.com"/>
+        </div>
+        <div class="fgroup">
+          <label>Phone Number</label>
+          <input type="text" id="empPhone" placeholder="e.g. 9876543210"/>
+        </div>
+      </div>
+
+      <!-- Row 4 -->
+      <div class="form-row">
+        <div class="fgroup">
+          <label>Joining Date <span class="req">*</span></label>
+          <input type="date" id="empJoin"/>
+        </div>
+        <div class="fgroup">
+          <label>Gender</label>
+          <select id="empGender">
+            <option value="">-- Select --</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-btns">
+        <button class="btn btn-primary" onclick="addEmployee()">➕ Add Employee</button>
+        <button class="btn btn-outline" onclick="clearForm()">🔄 Clear Form</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Employee table -->
+  <div class="table-section">
+    <div class="table-topbar">
+      <h3>👥 Registered Employees</h3>
+      <span id="empCountLabel" style="font-size:0.8rem; color:var(--text3)"></span>
+    </div>
+    <div class="tbox">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Emp ID</th>
+            <th>Department</th>
+            <th>Role</th>
+            <th>Joined</th>
+          </tr>
+        </thead>
+        <tbody id="empTbody">
+          <tr><td colspan="6" class="empty-row">No employees added yet.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>AttendEase &copy; 2026 &nbsp;·&nbsp; Built with <b>Java</b> + <b>MySQL</b> + <b>HTML/CSS/JS</b></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
