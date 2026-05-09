@@ -62,10 +62,10 @@ function convertDate(dateStr) {
 function loadDashboardStats() {
   var today = getTodayISO();
  
-  fetch('/attendance/getAttendance')
+  fetch('/getAttendance')
   .then(function(r) { return r.json(); })
   .then(function(records) {
-    fetch('/attendance/getEmployees')
+    fetch('/getEmployees')
     .then(function(r) { return r.json(); })
     .then(function(employees) {
  
@@ -124,7 +124,7 @@ function addEmployee() {
                '&joinDate=' + encodeURIComponent(convertDate(join)) +
                '&gender='   + encodeURIComponent(gender);
  
-  fetch('/attendance/addEmployee', {
+  fetch('/addEmployee', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: params
@@ -153,7 +153,7 @@ function clearForm() {
  
 // load employees from MySQL and show in table
 function loadEmployeesFromDB() {
-  fetch('/attendance/getEmployees')
+  fetch('/getEmployees')
   .then(function(r) { return r.json(); })
   .then(function(list) {
     var tbody = document.getElementById('empTbody');
@@ -189,7 +189,7 @@ function loadEmployeesFromDB() {
  
 // load employees and show Present / Late / Absent toggles
 function renderAttendanceTable() {
-  fetch('/attendance/getEmployees')
+  fetch('/getEmployees')
   .then(function(r) { return r.json(); })
   .then(function(list) {
     var tbody = document.getElementById('attendTbody');
@@ -273,7 +273,7 @@ function saveAttendance() {
   var params = 'date='     + encodeURIComponent(date)        +
                '&records=' + encodeURIComponent(recordsStr);
  
-  fetch('/attendance/markAttendance', {
+  fetch('/markAttendance', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: params
@@ -321,7 +321,7 @@ function switchTab(tab) {
  
 // load all attendance records from MySQL
 function renderRecordsTable() {
-  fetch('/attendance/getAttendance')
+  fetch('/getAttendance')
   .then(function(r) { return r.json(); })
   .then(function(list) {
     window.allRecords = list; // store for filtering
@@ -395,10 +395,10 @@ function loadMonthlyReport() {
   var tbody = document.getElementById('monthlyTbody');
   if (!tbody) return;
  
-  fetch('/attendance/getAttendance')
+  fetch('/getAttendance')
   .then(function(r) { return r.json(); })
   .then(function(records) {
-    fetch('/attendance/getEmployees')
+    fetch('/getEmployees')
     .then(function(r) { return r.json(); })
     .then(function(employees) {
  
